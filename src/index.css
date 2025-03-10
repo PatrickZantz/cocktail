@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: Playfair;
+  src: url("./fonts/Playfair.ttf");
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url("./fonts/Montserrat.ttf");
+}
+
+body {
+  background-color: #262B46;
+  color: whitesmoke;
+  font-family: Playfair;
+}
+
+p,
+input,
+button {
+  font-family: Montserrat;
+}
