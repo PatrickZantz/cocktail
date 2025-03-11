@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { mainContext } from "../../context/MainProvider";
 import Search from "../../components/Search";
 
-interface IItems {
+interface IItem {
   strDrink: string;
   strDrinkThumb: string;
   idDrink: number;
@@ -30,10 +30,10 @@ const colors = [
 ];
 
 
-const getIngredients = (item: IItems): string[] => {
+const getIngredients = (item: IItem): string[] => {
   const ingredients: string[] = [];
   for (let i = 1; i <= 10; i++) {
-    const ingredient = item[`strIngredient${i}` as keyof IItems];
+    const ingredient = item[`strIngredient${i}` as keyof IItem];
     if (ingredient && ingredient.toString().trim() !== "") {
       ingredients.push(ingredient.toString().trim());
     }
@@ -42,7 +42,7 @@ const getIngredients = (item: IItems): string[] => {
 };
 
 interface ModalProps {
-  cocktail: IItems | null;
+  cocktail: IItem | null;
   onClose: () => void;
 }
 
@@ -115,7 +115,7 @@ export default function SelectedCat() {
   const { linkParam } = useParams();
   const { items, setLink } = useContext(mainContext) as any;
 
-  const [selectedCocktail, setSelectedCocktail] = useState<IItems | null>(null);
+  const [selectedCocktail, setSelectedCocktail] = useState<IItem | null>(null);
 
   useEffect(() => {
     if (linkParam) {
@@ -123,10 +123,10 @@ export default function SelectedCat() {
     }
   }, [linkParam]);
 
-  const handleCocktailClick = async (item: IItems) => {
+  const handleCocktailClick = async (item: IItem) => {
     try {
       // Fetch cocktail details using the provided API endpoint
-      const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita');
+      const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + item.strDrink.toLowerCase());
       const data = await response.json();
   
       // Check if drinks are available in the response
@@ -167,7 +167,7 @@ export default function SelectedCat() {
     <>
       <Search />
       <div className="grid grid-cols-2 gap-4">
-        {items.map((item: IItems, index: number) => {
+        {items.map((item: IItem, index: number) => {
           const backgroundColor = colors[index % colors.length];
 
           return (
