@@ -76,11 +76,11 @@ const CocktailModal = ({ cocktail, onClose }: ModalProps) => {
 
   return (
     <div className="fixed inset-0 backdrop-blur-md flex justify-center items-center">
-      <div className="p-8 rounded-lg w-1/2 bg-gray-500">
+      <div className="p-8 rounded-lg w-1/2 sm:w-5xl bg-gray-500">
         <div className="flex-row gap-10">
-          <div className="flex gap-10">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
             <img
-              className="w-1/2 h-1/2 mb-4"
+              className="mb-4 justify-center"
               src={cocktail.strDrinkThumb}
               alt={cocktail.strDrink}
             />
@@ -166,7 +166,7 @@ export default function SelectedCat() {
   return (
     <>
       <Search />
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         {items.map((item: IItem, index: number) => {
           const backgroundColor = colors[index % colors.length];
 
