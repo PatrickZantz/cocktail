@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header
-      className="flex justify-between items-center tracking-widest p-5 bg-[#262B46] fixed left-1/2 transform -translate-x-1/2 w-[100%] pl-[10rem] pr-[10rem] z-10"
+      className="flex justify-between items-center tracking-widest p-5 bg-[#262B46] fixed left-1/2 transform -translate-x-1/2 w-[100%] lg:pl-[15rem] lg:pr-[15rem] z-10"
       aria-label="Website-Kopfbereich mit Navigation"
     >
       <Link to="/" aria-label="Zur Startseite">
